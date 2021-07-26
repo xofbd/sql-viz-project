@@ -1,1 +1,1 @@
-Simple Python project demostrating using data from a relational database to create a visualization.
+Simple Python project demostrating using data from a relational database to create a visualization. The `master` branch is the starting template and `minimial-app` is the branch that contains a minimal working Flask application.
