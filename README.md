@@ -1,1 +1,1 @@
-Simple Python project demostrating using data from a relational database to create a visualization. The `master` branch is the starting template and `minimal-app` is the branch that contains a minimal working Flask application.
+Simple Python project demostrating using data from a relational database to create a visualization. The [`master`](https://github.com/xofbd/sql-viz-project/tree/master) branch is the starting template and [`minimal-app`](https://github.com/xofbd/sql-viz-project/tree/minimal-app) is the branch that contains a minimal working Flask application.
