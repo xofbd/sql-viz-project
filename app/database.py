@@ -4,12 +4,12 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
 load_dotenv()
-URI_DB = os.getenv('URI_DB')
+URL_DB = os.getenv('URL_DB')
 
 
 def query_db(depth_min, grad_min):
     """Return wells that fit the search criteria."""
-    engine = create_engine(URI_DB)
+    engine = create_engine(URL_DB)
 
     query = text(
         """
