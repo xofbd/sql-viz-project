@@ -1,7 +1,10 @@
 import os
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, text
+from sqlalchemy import and_, create_engine
+from sqlalchemy.orm import sessionmaker
+
+from app.models import Wells
 
 load_dotenv()
 URL_DB = os.getenv('URL_DB')
@@ -10,21 +13,12 @@ URL_DB = os.getenv('URL_DB')
 def query_db(depth_min, grad_min):
     """Return wells that fit the search criteria."""
     engine = create_engine(URL_DB)
-
-    query = text(
-        """
-        SELECT latitude, longitude, depth, gradient
-        FROM wells
-        WHERE depth > :depth_min AND gradient > :grad_min;
-        """
+    session = sessionmaker(bind=engine)()
+    results = (
+        session
+        .query(Wells.latitude, Wells.longitude, Wells.depth, Wells.gradient)
+        .filter(and_(Wells.depth > depth_min, Wells.gradient > grad_min))
     )
-
-    with engine.connect() as conn:
-        results = (
-            conn
-            .execute(query, depth_min=depth_min, grad_min=grad_min)
-            .fetchall()
-        )
 
     return results
 
