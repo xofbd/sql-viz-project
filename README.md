@@ -7,3 +7,9 @@ To run, create a file in the project's root named `.env` based on the contents o
 * `pip install -r requirements.txt`
 * `source .env`
 * `flask run`
+
+Alternatively, there's a `Dockerfile`. You'll need to build the image and run a container:
+1. `docker build -t sql-viz-app .`
+1. `docker run --init --rm -d --publish 127.0.0.1:5000:5000 -e URL_DB=<URL-DB> sql-viz-app`
+
+Make sure to replace `<URL-DB>` with the actual URL of the PostgreSQL database.
